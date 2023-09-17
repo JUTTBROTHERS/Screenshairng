@@ -327,26 +327,26 @@ View logs of certain services:
     docker-compose logs janus
     docker-compose logs nginx certbot
 
-You can limit the output to last N lines by the `--tail` parameter:
+You can limit the output to the last N lines by the `--tail` parameter:
 
     docker-compose logs --tail=100
 
-To follow log messages in realtime, use the parameter `--follow` or `-f`:
+To follow log messages in real time, use the parameter `--follow` or `-f`:
 
     docker-compose logs --tail=100 --follow
 
 You can combine multiple parameters if required:
 
     docker-compose logs --tail 100 --follow certbot
-    docker-compose logs --tail=100 -f janus nginx
+    docker-compose logs --tail=100 -f Janus nginx
 
 _Read more about logging in [docker](https://docs.docker.com/engine/reference/commandline/logs/) and [docker-compose](https://docs.docker.com/compose/reference/logs/)._
 
 ### web-admin
 
-This is a web application for the remote access to the mobile device through a web browser. The app is written in HTML, CSS, and Javascript (WebRTC library is used for displaying the screencast and transferring gestures to a mobile device).
+This is a web application for remote access to the mobile device through a web browser. The app is written in HTML, CSS, and Javascript (WebRTC library is used for displaying the screencast and transferring gestures to a mobile device).
 
-The source code of the web application is stored in the folder `web-admin/`. During the deployment, it is compiled by using gulp: CSS and JS are minified and concatenated. The production files are stored in the folder `deploy/dist/web-admin`. In the same folder, a configuration file `settings.js` is stored, which contains the Headwind Remote settings (paths, ports, secrets).
+The source code of the web application is stored in the folder `web-admin/`. During the deployment, it is compiled by using gulp: CSS and JS are minified and concatenated. The production files are stored in the `deploy/dist/web-admin` folder. In the same folder, a configuration file `settings.js` is stored, which contains the Headwind Remote settings (paths, ports, secrets).
 
 If you need to modify the source code of the web admin application, modify the `web-admin` folder and run the following command to apply your changes:
 
@@ -371,8 +371,8 @@ To renew certificates, run the commands:
 
 The first command stops the service and renews the certificates. The second command starts Headwind Remote with new certificates.
 
-It is recommended to add these commands to a single script (hremote-cert-renewal.sh) and add this script to crontab (weekly run at non-peak time):
+It is recommended to add these commands to a single script (remote-cert-renewal.sh) and add this script to crontab (weekly run at non-peak time):
 
-    0 4 * * 1 /root/hmdm-server/hremote-cert-renewal.sh
+    0 4 * * 1 /root/hmdm-server/remote-cert-renewal.sh
 
 This crontab command runs the script weekly each Monday at 4 am.
